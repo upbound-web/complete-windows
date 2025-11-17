@@ -38,7 +38,7 @@
         html {
             scroll-behavior: smooth;
         }
-        
+
         /* Simple animation for stats counters */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -46,6 +46,53 @@
         }
         .fade-in {
             animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        /* Subtle gradient backgrounds */
+        .gradient-white-blue {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+        }
+
+        .gradient-gray-light {
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        }
+
+        .gradient-blue-gradient {
+            background: linear-gradient(135deg, #0066cc 0%, #007aff 50%, #0099ff 100%);
+        }
+
+        .gradient-primary-dark {
+            background: linear-gradient(135deg, #004a99 0%, #005ecb 100%);
+        }
+
+        /* Dotted pattern overlay */
+        .dotted-pattern {
+            background-image: radial-gradient(circle, rgba(0, 122, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Subtle diagonal lines */
+        .diagonal-lines {
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(0, 122, 255, 0.02) 10px,
+                rgba(0, 122, 255, 0.02) 20px
+            );
+        }
+
+        /* Animated gradient for hero sections */
+        .animated-gradient {
+            background: linear-gradient(270deg, #ffffff, #f0f9ff, #e0f2fe);
+            background-size: 600% 600%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
     </style>
 </head>
@@ -55,8 +102,9 @@
 
         <!-- ===== Sticky Header ===== --><header class="sticky top-0 z-50 bg-white shadow-md">
             <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-                <!-- Logo --><a href="#" class="text-2xl font-extrabold text-gray-900" onclick="showPage('page-window-cleaning'); return false;">
-                    Complete<span class="text-primary">Clean</span>
+                <!-- Logo --><a href="#" class="flex items-center gap-3" onclick="showPage('page-window-cleaning'); return false;">
+                    <img src="public/icon_logo.png" alt="Complete Window Cleaning Logo" class="h-14 w-14">
+                    <span class="text-2xl font-extrabold text-gray-900 uppercase">Complete Window Cleaning</span>
                 </a>
                 
                 <!-- Navigation Links (Desktop) --><div class="hidden md:flex items-center space-x-6">
@@ -91,7 +139,7 @@
             
             <!-- =================================================================== --><!-- ===== PAGE 1: WINDOW CLEANING SERVICE (Default) ===== --><!-- =================================================================== --><div id="page-window-cleaning">
 
-                <!-- Section 1: Hero --><section class="bg-white">
+                <!-- Section 1: Hero --><section class="animated-gradient">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center py-16 md:py-24">
                         <!-- Left Content --><div class="text-center md:text-left">
                             <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
@@ -127,12 +175,12 @@
                         </div>
                         
                         <!-- Right Image --><div class="flex items-center justify-center">
-                            <img src="https://placehold.co/600x450/a0d2eb/ffffff?text=Streak-Free+Home+Windows" alt="Beautifully clean home windows" class="rounded-lg shadow-2xl w-full h-auto object-cover">
+                            <img src="public/hero_image.png" alt="Beautifully clean home windows" class="rounded-lg shadow-2xl w-full h-auto object-cover max-h-[85vh]">
                         </div>
                     </div>
                 </section>
 
-                <!-- Section 2: Value Proposition --><section class="py-16 bg-gray-50">
+                <!-- Section 2: Value Proposition --><section class="py-16 gradient-gray-light dotted-pattern">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                         <h2 class="text-3xl font-extrabold text-center text-gray-900">Why Choose Complete Window Cleaning?</h2>
                         <div class="grid md:grid-cols-3 gap-8 mt-12">
@@ -161,7 +209,7 @@
                     </div>
                 </section>
                 
-                <!-- Section 3: Social Proof --><section class="py-16 bg-white">
+                <!-- Section 3: Social Proof --><section class="py-16 gradient-white-blue">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-5 gap-12">
                         <!-- Left: Reviews --><div class="md:col-span-3">
                             <h2 class="text-3xl font-extrabold text-gray-900 mb-8">What Our Customers Say</h2>
@@ -205,7 +253,7 @@
                     </div>
                 </section>
 
-                <!-- Section 4: Services Overview --><section class="py-16 bg-gray-50">
+                <!-- Section 4: Services Overview --><section class="py-16 gradient-gray-light diagonal-lines">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                         <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-12">Complete Window Cleaning Services</h2>
                         <div class="grid md:grid-cols-2 gap-8">
@@ -257,7 +305,7 @@
                     </div>
                 </section>
 
-                <!-- Section 5: Before & After --><section class="py-16 bg-white">
+                <!-- Section 5: Before & After --><section class="py-16 gradient-white-blue">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                         <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-12">See the Complete Difference</h2>
                         <div class="grid md:grid-cols-2 gap-8">
@@ -285,7 +333,7 @@
                     </div>
                 </section>
 
-                <!-- Section 6: Process --><section class="py-16 bg-gray-50">
+                <!-- Section 6: Process --><section class="py-16 gradient-gray-light dotted-pattern">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                         <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-12">Simple, Fast, & Spotless</h2>
                         <div class="relative">
@@ -317,10 +365,10 @@
                     </div>
                 </section>
 
-                <!-- Section 7: Technology --><section class="py-16 bg-white">
+                <!-- Section 7: Technology --><section class="py-16 gradient-white-blue">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
                         <!-- Image --><div>
-                            <img src="https://placehold.co/600x450/dbeafe/ffffff?text=Pure+Water-Fed+Pole+System" alt="Technician using pure water-fed pole system" class="rounded-lg shadow-2xl w-full h-auto object-cover">
+                            <img src="public/waterFedImage.jpg" alt="Technician using pure water-fed pole system" class="rounded-lg shadow-2xl w-full h-auto object-cover">
                         </div>
                         <!-- Content --><div>
                             <h2 class="text-3xl font-extrabold text-gray-900">Pure Water Technology for Superior Results</h2>
@@ -345,7 +393,7 @@
                     </div>
                 </section>
                 
-                <!-- Section 8: Service Area --><section class="py-16 bg-gray-50">
+                <!-- Section 8: Service Area --><section class="py-16 gradient-gray-light diagonal-lines">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                         <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-12">Proudly Serving Manning Valley & Mid North Coast NSW</h2>
                         <div class="grid md:grid-cols-2 gap-8">
@@ -383,7 +431,7 @@
                     </div>
                 </section>
 
-                <!-- Section 9: FAQ --><section class="py-16 bg-white">
+                <!-- Section 9: FAQ --><section class="py-16 gradient-white-blue dotted-pattern">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                         <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-12">Frequently Asked Questions</h2>
                         <div class="max-w-3xl mx-auto space-y-4" id="faq-container-window">
@@ -427,7 +475,7 @@
                     </div>
                 </section>
 
-                <!-- Section 10: Final Conversion --><section class="py-16 bg-primary-dark" id="final-quote-form">
+                <!-- Section 10: Final Conversion --><section class="py-16 gradient-blue-gradient" id="final-quote-form">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                         <h2 class="text-3xl font-extrabold text-center text-white mb-12">Ready for Spotless Windows?</h2>
                         <div class="grid md:grid-cols-2 gap-12">
@@ -494,8 +542,8 @@
                 </section>
                 
             </div> <!-- End Page 1 --><!-- =================================================================== --><!-- ===== PAGE 2: SOLAR PANEL CLEANING (Hidden by default) ===== --><!-- =================================================================== --><div id="page-solar-cleaning" class="hidden">
-            
-                <!-- Section 1: Hero --><section class="bg-white">
+
+                <!-- Section 1: Hero --><section class="animated-gradient">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center py-16 md:py-24">
                         <!-- Left Content --><div class="text-center md:text-left">
                             <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
@@ -536,7 +584,7 @@
                     </div>
                 </section>
 
-                <!-- Section 2: Why Clean? --><section class="py-16 bg-gray-50">
+                <!-- Section 2: Why Clean? --><section class="py-16 gradient-gray-light dotted-pattern">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                         <h2 class="text-3xl font-extrabold text-center text-gray-900">Dirty Panels = Lost Money</h2>
                         <p class="text-lg text-gray-600 text-center mt-2 max-w-3xl mx-auto">Don't let dirt, dust, and bird droppings reduce your solar output. Regular cleaning is essential.</p>
@@ -566,7 +614,7 @@
                     </div>
                 </section>
                 
-                <!-- Section 3: Our Process --><section class="py-16 bg-white">
+                <!-- Section 3: Our Process --><section class="py-16 gradient-white-blue">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
                         <!-- Content --><div>
                             <h2 class="text-3xl font-extrabold text-gray-900">Safe for Your Panels, Safe for the Environment</h2>
@@ -594,7 +642,7 @@
                     </div>
                 </section>
                 
-                <!-- Section 4: Before & After --><section class="py-16 bg-gray-50">
+                <!-- Section 4: Before & After --><section class="py-16 gradient-gray-light diagonal-lines">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                         <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-12">See the Difference Clean Panels Make</h2>
                         <div class="grid md:grid-cols-2 gap-8">
@@ -622,7 +670,7 @@
                     </div>
                 </section>
                 
-                <!-- Section 5: Pricing --><section class="py-16 bg-white">
+                <!-- Section 5: Pricing --><section class="py-16 gradient-white-blue dotted-pattern">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                         <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-12">Transparent Solar Cleaning Pricing</h2>
                         <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -671,7 +719,7 @@
                     </div>
                 </section>
 
-                <!-- Section 6: FAQ Solar --><section class="py-16 bg-gray-50">
+                <!-- Section 6: FAQ Solar --><section class="py-16 gradient-gray-light diagonal-lines">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                         <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-12">Your Solar Cleaning Questions</h2>
                         <div class="max-w-3xl mx-auto space-y-4" id="faq-container-solar">
