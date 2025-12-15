@@ -94,6 +94,77 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
+        /* Button hover animations */
+        button, a {
+            transition: all 0.3s ease;
+        }
+
+        .bg-primary, .bg-secondary {
+            position: relative;
+        }
+
+        .bg-primary:hover, .bg-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Form input focus styles */
+        input:focus, select:focus, textarea:focus {
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+
+        /* Smooth card transitions */
+        .hover\:shadow-xl {
+            transition: all 0.3s ease;
+        }
+
+        /* Success animation for forms */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-message {
+            animation: slideIn 0.4s ease forwards;
+        }
+
+        /* Enhanced form styling */
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            transition: all 0.3s ease;
+            border: 2px solid #e5e7eb;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus {
+            border-color: #007aff;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+            outline: none;
+        }
+
+        /* Card lift effect on hover */
+        .shadow-lg {
+            transition: all 0.3s ease;
+        }
+
+        section > div > div > .bg-white {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section > div > div > .bg-white:hover {
+            transform: translateY(-4px);
+        }
     </style>
 </head>
 <body class="font-sans bg-gray-50 text-gray-800 antialiased">
@@ -114,22 +185,25 @@
                     <button id="nav-solar" class="text-gray-600 hover:text-primary transition-colors duration-200" onclick="showPage('page-solar-cleaning')">
                         Solar Panel Cleaning
                     </button>
-                    <a href="tel:0434561814" class="px-5 py-2 bg-primary text-white font-semibold rounded-lg shadow-md hover:bg-primary-dark transition-all duration-200">
+                    <a href="tel:0434561814" class="px-4 py-2 bg-primary text-white font-semibold rounded-lg shadow-md hover:bg-primary-dark transition-all duration-200 whitespace-nowrap text-sm lg:text-base">
                         Call Now: 0434 561 814
                     </a>
                 </div>
 
-                <!-- Mobile Menu Toggle (Simple click-to-call) --><div class="md:hidden">
-                    <a href="tel:0434561814" class="px-4 py-2 bg-primary text-white font-semibold rounded-lg shadow-md hover:bg-primary-dark transition-all duration-200">
+                <!-- Mobile Menu Toggle --><div class="md:hidden flex items-center gap-2">
+                    <button id="mobile-menu-toggle" class="text-gray-600 hover:text-primary transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                    <a href="tel:0434561814" class="px-3 py-2 bg-primary text-white font-semibold rounded-lg shadow-md hover:bg-primary-dark transition-all duration-200 text-sm whitespace-nowrap">
                         Call Now
                     </a>
                 </div>
             </nav>
-            <!-- Mobile Nav Links --><div class="md:hidden flex justify-center space-x-4 pb-3 border-t border-gray-200">
-                <button id="nav-window-mobile" class="text-gray-600 hover:text-primary transition-colors duration-200 py-2" onclick="showPage('page-window-cleaning')">
+            <!-- Mobile Nav Links (Hidden by default) --><div id="mobile-nav-menu" class="md:hidden hidden flex flex-col space-y-2 pb-3 px-4 bg-gray-50 border-t border-gray-200">
+                <button id="nav-window-mobile" class="text-gray-600 hover:text-primary transition-colors duration-200 py-3 px-4 text-left rounded-lg hover:bg-gray-100" onclick="showPage('page-window-cleaning'); closeMobileMenu();">
                     Window Cleaning
                 </button>
-                <button id="nav-solar-mobile" class="text-gray-600 hover:text-primary transition-colors duration-200 py-2" onclick="showPage('page-solar-cleaning')">
+                <button id="nav-solar-mobile" class="text-gray-600 hover:text-primary transition-colors duration-200 py-3 px-4 text-left rounded-lg hover:bg-gray-100" onclick="showPage('page-solar-cleaning'); closeMobileMenu();">
                     Solar Panel Cleaning
                 </button>
             </div>
@@ -258,7 +332,7 @@
                         <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-12">Complete Window Cleaning Services</h2>
                         <div class="grid md:grid-cols-2 gap-8">
                             <!-- Residential --><div class="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col">
-                                <img src="https://placehold.co/600x350/c7e8f3/ffffff?text=Residential+Cleaning" alt="Residential window cleaning" class="w-full h-56 object-cover">
+                                <img src="public/uploads/1765829805839-JCiyYJVX-pexels-mastercowley-713297.jpg" alt="Residential window cleaning" class="w-full h-56 object-cover">
                                 <div class="p-8 flex-grow">
                                     <h3 class="text-2xl font-bold mb-4">Residential Window Cleaning</h3>
                                     <ul class="space-y-2 text-gray-600 list-disc list-inside">
@@ -276,7 +350,7 @@
                                 </div>
                             </div>
                             <!-- Commercial --><div class="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col">
-                                <img src="https://placehold.co/600x350/d1d5db/ffffff?text=Commercial+Cleaning" alt="Commercial window cleaning" class="w-full h-56 object-cover">
+                                <img src="public/uploads/1765829805836-oVMM26oj-pexels-konstantinolsen-287263.jpg" alt="Commercial window cleaning" class="w-full h-56 object-cover">
                                 <div class="p-8 flex-grow">
                                     <h3 class="text-2xl font-bold mb-4">Commercial Window Cleaning</h3>
                                     <ul class="space-y-2 text-gray-600 list-disc list-inside">
@@ -311,11 +385,11 @@
                         <div class="grid md:grid-cols-2 gap-8">
                             <!-- Example 1 --><div class="grid grid-cols-2 gap-2 rounded-lg shadow-xl overflow-hidden border border-gray-200">
                                 <div>
-                                    <img src="https://placehold.co/400x400/d1d5db/333333?text=Before:+Dirty+Window" alt="Dirty window before cleaning" class="w-full h-full object-cover">
+                                    <img src="public/uploads/1765829510097-rr9snlIS-pexels-alteredsnaps-12397138.jpg" alt="Dirty window before cleaning" class="w-full h-full object-cover">
                                     <h4 class="text-center font-bold p-3 bg-gray-200 text-gray-700">BEFORE</h4>
                                 </div>
                                 <div>
-                                    <img src="https://placehold.co/400x400/a0d2eb/ffffff?text=After:+Sparkling+Window" alt="Clean window after cleaning" class="w-full h-full object-cover">
+                                    <img src="public/uploads/1765829657104-jdIcQDcu-after_complete_window.png" alt="Clean window after cleaning" class="w-full h-full object-cover">
                                     <h4 class="text-center font-bold p-3 bg-primary text-white">AFTER</h4>
                                 </div>
                             </div>
@@ -516,11 +590,11 @@
                                     <p class="text-xs text-gray-500 text-center">We'll respond within 1 hour. No obligation, 100% free quote.</p>
                                 </form>
                             </div>
-                            
+
                             <!-- Contact Info --><div class="text-white">
                                 <h3 class="text-2xl font-bold mb-4">Prefer to Call?</h3>
-                                <a href="tel:0434561814" class="text-4xl font-extrabold text-secondary hover:text-green-300 transition-colors">
-                                    0434 561 814
+                                <a href="tel:0434561814" class="text-5xl font-extrabold text-secondary hover:text-green-400 transition-colors drop-shadow-lg">
+                                    Call Us: 0434 561 814
                                 </a>
                                 <ul class="space-y-3 mt-8 text-lg">
                                     <li class="flex items-center">
@@ -540,7 +614,6 @@
                         </div>
                     </div>
                 </section>
-                
             </div> <!-- End Page 1 --><!-- =================================================================== --><!-- ===== PAGE 2: SOLAR PANEL CLEANING (Hidden by default) ===== --><!-- =================================================================== --><div id="page-solar-cleaning" class="hidden">
 
                 <!-- Section 1: Hero --><section class="animated-gradient">
@@ -579,26 +652,26 @@
                         </div>
                         
                         <!-- Right Image --><div class="flex items-center justify-center">
-                            <img src="https://placehold.co/600x450/fde68a/333333?text=Clean+Solar+Panels" alt="Clean solar panels on a roof" class="rounded-lg shadow-2xl w-full h-auto object-cover">
+                            <img src="public/uploads/1765744245355-fyR1RVsV-blob.jpg" alt="Clean solar panels on a roof" class="rounded-lg shadow-2xl w-full h-auto object-cover">
                         </div>
                     </div>
                 </section>
 
                 <!-- Section 2: Why Clean? --><section class="py-16 gradient-gray-light dotted-pattern">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                        <h2 class="text-3xl font-extrabold text-center text-gray-900">Dirty Panels = Lost Money</h2>
+                        <h2 class="text-3xl font-extrabold text-center text-gray-900">Clean Panels = Peak Performance</h2>
                         <p class="text-lg text-gray-600 text-center mt-2 max-w-3xl mx-auto">Don't let dirt, dust, and bird droppings reduce your solar output. Regular cleaning is essential.</p>
                         <div class="grid md:grid-cols-3 gap-8 mt-12">
                             <!-- Column 1 --><div class="text-center p-8 bg-white rounded-lg shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-                                <div class="inline-flex items-center justify-center w-16 h-16 bg-red-600 text-white rounded-full mb-4">
-                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg>
+                                <div class="inline-flex items-center justify-center w-16 h-16 bg-primary text-white rounded-full mb-4">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h8m0 0v-8m0 8l-8-8m0 0h-8v8"></path></svg>
                                 </div>
                                 <h3 class="text-xl font-bold mb-2">Efficiency Loss</h3>
                                 <p class="text-gray-600">Dirty panels can lose 15-25% efficiency, costing you hundreds per year in lost energy production.</p>
                             </div>
                             <!-- Column 2 --><div class="text-center p-8 bg-white rounded-lg shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-                                <div class="inline-flex items-center justify-center w-16 h-16 bg-secondary text-white rounded-full mb-4">
-                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0c-1.657 0-3-.895-3-2s1.343-2 3-2 3-.895 3-2-1.343-2-3-2m0 8c-1.11 0-2.08-.402-2.599-1M12 16v-1m0 1v1m0-1c1.11 0 2.08.402 2.599 1m-2.599-1c-1.11 0-2.08-.402-2.599-1m5.198 0c.23.23.44.477.62.744m-5.818 0c-.23-.23-.44-.477-.62-.744M12 16a9 9 0 11-8-5.198M12 16a9 9 0 108-5.198m-8 5.198l-1.07-3.63m10.14 0L16 16.198"></path></svg>
+                                <div class="inline-flex items-center justify-center w-16 h-16 bg-primary text-white rounded-full mb-4">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0c-1.657 0-3-.895-3-2s1.343-2 3-2 3-.895 3-2-1.343-2-3-2m0 8c-1.11 0-2.08-.402-2.599-1M12 16v-1m0 1v1"></path></svg>
                                 </div>
                                 <h3 class="text-xl font-bold mb-2">Protect Your Investment</h3>
                                 <p class="text-gray-600">Regular cleaning extends panel lifespan, prevents "hot spots," and maintains your warranty coverage.</p>
@@ -637,7 +710,7 @@
                             </ul>
                         </div>
                         <!-- Image --><div>
-                            <img src="https://placehold.co/600x450/e0f2fe/333333?text=Safe+Cleaning+Method" alt="Gentle cleaning of solar panels" class="rounded-lg shadow-2xl w-full h-auto object-cover">
+                            <img src="public/uploads/1765744458568-rJxzGOzP-pexels-pixabay-356049.jpg" alt="Gentle cleaning of solar panels" class="rounded-lg shadow-2xl w-full h-auto object-cover">
                         </div>
                     </div>
                 </section>
@@ -648,11 +721,11 @@
                         <div class="grid md:grid-cols-2 gap-8">
                             <!-- Example 1 --><div class="grid grid-cols-2 gap-2 rounded-lg shadow-xl overflow-hidden border border-gray-200">
                                 <div>
-                                    <img src="https://placehold.co/400x400/a1a1aa/333333?text=Before:+Dusty+Panels" alt="Dusty solar panels before cleaning" class="w-full h-full object-cover">
+                                    <img src="public/uploads/1765745025484-vrhp6wuw-pexels-kindelmedia-9799706.jpg" alt="Dusty solar panels before cleaning" class="w-full h-full object-cover">
                                     <h4 class="text-center font-bold p-3 bg-gray-200 text-gray-700">BEFORE</h4>
                                 </div>
                                 <div>
-                                    <img src="https://placehold.co/400x400/fde68a/333333?text=After:+Efficient+Panels" alt="Clean solar panels after cleaning" class="w-full h-full object-cover">
+                                    <img src="public/uploads/1765745230912-1fvmbvwX-Gemini_Generated_Image_sc5d3psc5d3psc5d.png" alt="Clean solar panels after cleaning" class="w-full h-full object-cover">
                                     <h4 class="text-center font-bold p-3 bg-primary text-white">AFTER</h4>
                                 </div>
                             </div>
@@ -669,57 +742,8 @@
                         </div>
                     </div>
                 </section>
-                
-                <!-- Section 5: Pricing --><section class="py-16 gradient-white-blue dotted-pattern">
-                    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                        <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-12">Transparent Solar Cleaning Pricing</h2>
-                        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                            <!-- Residential Pricing --><div class="bg-gray-50 rounded-lg shadow-xl border border-gray-200 p-8 flex flex-col">
-                                <h3 class="text-2xl font-bold mb-4 text-center">Residential Solar Cleaning</h3>
-                                <p class="text-center text-gray-600 mb-6">Standard home systems. Get an exact quote today.</p>
-                                <div class="text-center mb-6">
-                                    <span class="text-gray-600 text-lg">Starting from</span>
-                                    <span class="text-5xl font-extrabold text-primary block">$149</span>
-                                </div>
-                                <ul class="space-y-2 text-gray-600 list-disc list-inside mb-8 flex-grow">
-                                    <li>Standard System (up to 20 panels)</li>
-                                    <li>Larger Systems (20-40 panels) from $199</li>
-                                    <li>Custom quotes for larger installs</li>
-                                </ul>
-                                <a href="#solar-quote-form" class="block w-full text-center px-6 py-3 bg-primary text-white text-lg font-semibold rounded-lg shadow-md hover:bg-primary-dark transition-all duration-200">
-                                    Get Residential Quote
-                                </a>
-                            </div>
-                            
-                            <!-- Commercial Pricing --><div class="bg-gray-50 rounded-lg shadow-xl border border-gray-200 p-8 flex flex-col">
-                                <h3 class="text-2xl font-bold mb-4 text-center">Commercial Solar Cleaning</h3>
-                                <p class="text-center text-gray-600 mb-6">For businesses and industrial solar arrays.</p>
-                                <div class="text-center mb-6">
-                                    <span class="text-5xl font-extrabold text-primary block">Custom Quote</span>
-                                </div>
-                                <ul class="space-y-2 text-gray-600 list-disc list-inside mb-8 flex-grow">
-                                    <li>Business & Industrial Arrays</li>
-                                    <li>Flexible Maintenance Contracts</li>
-                                    <li>Minimal Business Disruption</li>
-                                    <li>Detailed Reporting</li>
-                                </ul>
-                                <a href="#solar-quote-form" class="block w-full text-center px-6 py-3 bg-primary text-white text-lg font-semibold rounded-lg shadow-md hover:bg-primary-dark transition-all duration-200">
-                                    Get Commercial Quote
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Bundle Offer --><div class="mt-16 text-center bg-secondary text-white p-8 rounded-lg shadow-2xl">
-                            <h3 class="text-3xl font-bold">Bundle & Save 10%</h3>
-                            <p class="text-lg mt-2">Book your window cleaning and solar panel cleaning together and save 10% on your total bill!</p>
-                            <a href="#solar-quote-form" class="mt-4 inline-block px-8 py-3 bg-white text-secondary-dark text-lg font-semibold rounded-lg shadow-md hover:bg-gray-100 transition-all duration-200">
-                                Quote Me for Both
-                            </a>
-                        </div>
-                    </div>
-                </section>
 
-                <!-- Section 6: FAQ Solar --><section class="py-16 gradient-gray-light diagonal-lines">
+                <!-- Section 5: FAQ Solar --><section class="py-16 gradient-gray-light diagonal-lines">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                         <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-12">Your Solar Cleaning Questions</h2>
                         <div class="max-w-3xl mx-auto space-y-4" id="faq-container-solar">
@@ -763,5 +787,176 @@
                     </div>
                 </section>
                 
-                <!-- Section 7: Why Choose Us / Cross-Promo -->
+                <!-- Section 7: Final Conversion --><section class="py-16 gradient-blue-gradient" id="solar-quote-form">
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 class="text-3xl font-extrabold text-center text-white mb-12">Ready to Maximize Your Solar Efficiency?</h2>
+                        <div class="grid md:grid-cols-2 gap-12">
+                            <!-- Form --><div class="bg-white p-8 rounded-lg shadow-2xl">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-6">Get Your Free Solar Quote Today</h3>
+                                <form id="form-solar" class="space-y-4">
+                                    <div>
+                                        <label for="solar-name" class="block text-sm font-medium text-gray-700">Name (Required)</label>
+                                        <input type="text" id="solar-name" name="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    </div>
+                                    <div>
+                                        <label for="solar-phone" class="block text-sm font-medium text-gray-700">Phone (Required)</label>
+                                        <input type="tel" id="solar-phone" name="phone" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    </div>
+                                    <div>
+                                        <label for="solar-email" class="block text-sm font-medium text-gray-700">Email (Required)</label>
+                                        <input type="email" id="solar-email" name="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    </div>
+                                    <div>
+                                        <label for="solar-service-type" class="block text-sm font-medium text-gray-700">Service Type</label>
+                                        <select id="solar-service-type" name="service-type" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary bg-white">
+                                            <option>Solar Panel Cleaning Only</option>
+                                            <option>Solar + Window Cleaning Bundle (Save 10%)</option>
+                                            <option>Window Cleaning</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="solar-address" class="block text-sm font-medium text-gray-700">Property Address/Suburb (Required)</label>
+                                        <input type="text" id="solar-address" name="address" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="w-full px-8 py-3 bg-secondary text-white text-lg font-semibold rounded-lg shadow-md hover:bg-secondary-dark transition-all duration-200">
+                                            Get My Free Quote
+                                        </button>
+                                    </div>
+                                    <p class="text-xs text-gray-500 text-center">We'll respond within 1 hour. No obligation, 100% free quote.</p>
+                                </form>
+                            </div>
 
+                            <!-- Contact Info --><div class="text-white">
+                                <h3 class="text-2xl font-bold mb-4">Prefer to Call?</h3>
+                                <a href="tel:0434561814" class="text-5xl font-extrabold text-secondary hover:text-green-400 transition-colors drop-shadow-lg">
+                                    Call Us: 0434 561 814
+                                </a>
+                                <ul class="space-y-3 mt-8 text-lg">
+                                    <li class="flex items-center">
+                                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                        info@completewindowcleaning.com.au
+                                    </li>
+                                    <li class="flex items-center">
+                                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        Mon - Sat: 7:00 AM - 5:00 PM
+                                    </li>
+                                    <li class="flex items-center">
+                                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                        Serving Manning Valley & Mid North Coast
+                                    </li>
+                                </ul>
+
+                                <!-- Cross-promotion back to Window Cleaning --><div class="mt-12 bg-white text-gray-900 p-6 rounded-lg shadow-xl">
+                                    <h4 class="text-xl font-bold mb-2">Also Need Window Cleaning?</h4>
+                                    <p class="text-gray-600 mb-4">Bundle and save 10% on your total service!</p>
+                                    <button class="w-full px-6 py-3 bg-primary text-white text-lg font-semibold rounded-lg shadow-md hover:bg-primary-dark transition-all duration-200" onclick="showPage('page-window-cleaning')">
+                                        View Window Cleaning
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div> <!-- End Page 2: Solar Panel Cleaning -->
+
+        </main>
+
+        <!-- Footer --><footer class="bg-gray-900 text-gray-300 py-8">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p>&copy; <span id="current-year"></span> Complete Window Cleaning. All rights reserved.</p>
+                <p class="mt-2 text-sm">Serving Manning Valley & Mid North Coast NSW with professional window and solar panel cleaning services.</p>
+            </div>
+        </footer>
+
+    </div> <!-- End App Container -->
+
+    <!-- JavaScript for Page Navigation and FAQ Toggles --><script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-nav-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobile-nav-menu');
+            menu.classList.add('hidden');
+        }
+
+        // Page navigation function
+        function showPage(pageId) {
+            // Hide all pages
+            document.getElementById('page-window-cleaning').classList.add('hidden');
+            document.getElementById('page-solar-cleaning').classList.add('hidden');
+
+            // Show the requested page
+            document.getElementById(pageId).classList.remove('hidden');
+
+            // Update nav button styles
+            const navButtons = {
+                'page-window-cleaning': ['nav-window', 'nav-window-mobile'],
+                'page-solar-cleaning': ['nav-solar', 'nav-solar-mobile']
+            };
+
+            // Reset all nav buttons
+            Object.values(navButtons).flat().forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) {
+                    btn.classList.remove('text-primary', 'font-bold');
+                    btn.classList.add('text-gray-600');
+                }
+            });
+
+            // Highlight active nav buttons
+            if (navButtons[pageId]) {
+                navButtons[pageId].forEach(id => {
+                    const btn = document.getElementById(id);
+                    if (btn) {
+                        btn.classList.remove('text-gray-600');
+                        btn.classList.add('text-primary', 'font-bold');
+                    }
+                });
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // FAQ toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+            }
+
+            // FAQs
+            const faqToggles = document.querySelectorAll('.faq-toggle');
+
+            faqToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('.faq-icon');
+
+                    if (content.classList.contains('hidden')) {
+                        content.classList.remove('hidden');
+                        icon.textContent = '−';
+                    } else {
+                        content.classList.add('hidden');
+                        icon.textContent = '+';
+                    }
+                });
+            });
+
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Set initial active nav state
+            showPage('page-window-cleaning');
+        });
+    </script>
+
+</body>
+</html>
